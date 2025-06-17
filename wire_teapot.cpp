@@ -8,7 +8,6 @@ void init() {
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glEnable(GL_DEPTH_TEST);
 
-    // 조명 설정
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
 
@@ -19,11 +18,11 @@ void init() {
 }
 
 void drawTeapot() {
-    glPushMatrix(); // 현재 행렬 저장
-    glRotatef(rotationAngle, 0.0f, 1.0f, 0.0f); // Y축 중심 회전
-    glColor3f(0.0f, 1.0f, 0.0f); // 주전자 색상
+    glPushMatrix();
+    glRotatef(rotationAngle, 0.0f, 1.0f, 0.0f);
+    glColor3f(0.0f, 1.0f, 0.0f);
     glutWireTeapot(0.5);
-    glPopMatrix(); // 이전 행렬 복원
+    glPopMatrix();
 }
 
 void display() {
@@ -31,9 +30,9 @@ void display() {
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    gluLookAt(2.0, 2.0, 2.0,   // eye
-        0.0, 0.0, 0.0,   // center
-        0.0, 1.0, 0.0);  // up
+    gluLookAt(2.0, 2.0, 2.0,
+        0.0, 0.0, 0.0,
+        0.0, 1.0, 0.0);
 
     drawTeapot();
 
@@ -57,7 +56,7 @@ void update(int value) {
         rotationAngle -= 360.0f;
 
     glutPostRedisplay();
-    glutTimerFunc(16, update, 0); // 약 60 FPS
+    glutTimerFunc(16, update, 0);
 }
 
 int main(int argc, char** argv) {
